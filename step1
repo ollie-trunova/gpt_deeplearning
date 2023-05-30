@@ -1,6 +1,6 @@
 
 import openai
-openai.api_key = 'sk-***'
+openai.api_key = 'sk-***' # you can create a private key in your personal account at openai.com
 
 def get_completion(prompt, model = 'gpt-3.5-turbo'):
     messages = [{'role': 'user', 'content': prompt}]
