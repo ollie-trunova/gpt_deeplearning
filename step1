@@ -10,6 +10,7 @@ def get_completion(prompt, model = 'gpt-3.5-turbo'):
     )
     return response.choices[0].message['content']
 
+# TASK 1
 text = f"""
 A dog is smaller than a horse. A horse is bigger than a zebra. A zebra is bigger than a dog.
 """
@@ -23,7 +24,7 @@ answer the question: which animal would need the biggest shelter?
 response = get_completion(prompt)
 print(response)
 
-#output : A horse would need the biggest shelter.
+# TASK 2
 
 prompt = f"""
 Generate a list of 3 random western movies of 2010-2020.
@@ -34,24 +35,23 @@ movie_id, title, IMDB_ranking, director
 response = get_completion(prompt)
 print(response)
 
-""" output: 
-[
-  {
-    "movie_id": 1,
-    "title": "The Hateful Eight",
-    "IMDB_ranking": 7.8,
-    "director": "Quentin Tarantino"
-  },
-  {
-    "movie_id": 2,
-    "title": "Hell or High Water",
-    "IMDB_ranking": 7.6,
-    "director": "David Mackenzie"
-  },
-  {
-    "movie_id": 3,
-    "title": "The Ballad of Buster Scruggs",
-    "IMDB_ranking": 7.3,
-    "director": "Joel Coen, Ethan Coen"
-  }
-] """
+# TASK 3
+
+text = f"""
+We've been sitting all night watching all 7 Harry Potter movies.
+"""
+
+prompt = f"""
+You will be provided with text delimited by triple backsticks.
+Find the name of the movies or series of movies and rewrite all of them
+in the following format:
+Movie 1: ...
+Movie 2: ...
+...
+Movie N: ...
+If no movies are provided, write 'No movies this time'.
+```{text}```
+"""
+
+response = get_completion(prompt)
+print(response)
