@@ -55,6 +55,9 @@ If no movies are provided, write 'No movies this time'.
 ```{text}```
 """
 
+response = get_completion(prompt)
+print(response)
+
 # TASK 4
 
 text = f"""
@@ -78,7 +81,5 @@ Do the following steps:
 ```{text}```
 """
 
-response = get_completion(prompt)
-print(response)
 response = get_completion(prompt)
 print(response)
