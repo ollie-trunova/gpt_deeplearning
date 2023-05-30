@@ -1,0 +1,57 @@
+import openai
+openai.api_key = 'sk-***'
+
+def get_completion(prompt, model = 'gpt-3.5-turbo'):
+    messages = [{'role': 'user', 'content': prompt}]
+    response = openai.ChatCompletion.create(
+        model = model,
+        messages = messages,
+        temperature = 0
+    )
+    return response.choices[0].message['content']
+
+text = f"""
+A dog is smaller than a horse. A horse is bigger than a zebra. A zebra is bigger than a dog.
+"""
+
+prompt = f"""
+According to the information delimited by triple backticks, 
+answer the question: which animal would need the biggest shelter?
+```{text}```
+"""
+
+response = get_completion(prompt)
+print(response)
+
+#output : A horse would need the biggest shelter.
+
+prompt = f"""
+Generate a list of 3 random western movies of 2010-2020.
+Provide them in JSON format with the following keys:
+movie_id, title, IMDB_ranking, director
+"""
+
+response = get_completion(prompt)
+print(response)
+
+""" output: 
+[
+  {
+    "movie_id": 1,
+    "title": "The Hateful Eight",
+    "IMDB_ranking": 7.8,
+    "director": "Quentin Tarantino"
+  },
+  {
+    "movie_id": 2,
+    "title": "Hell or High Water",
+    "IMDB_ranking": 7.6,
+    "director": "David Mackenzie"
+  },
+  {
+    "movie_id": 3,
+    "title": "The Ballad of Buster Scruggs",
+    "IMDB_ranking": 7.3,
+    "director": "Joel Coen, Ethan Coen"
+  }
+] """
