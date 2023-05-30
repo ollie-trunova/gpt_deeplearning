@@ -55,5 +55,30 @@ If no movies are provided, write 'No movies this time'.
 ```{text}```
 """
 
+# TASK 4
+
+text = f"""
+Toucans are indeed restricted to tropical realms and occur from tropical forests in Mexico south 
+to northern Argentina. Although they are absent from Caribbean Islands, several toucan species range 
+in cloud forest, rainforest, and tropical savannah habitats. Costa Rica is fortunate to have 6 species 
+of toucans and even better, most are fairly easy to see!
+
+In general, toucans are very social birds that occur in pairs or small flocks. They nest in tree cavities 
+and use their large beaks to eat fruit, insects and many other small creatures, including eggs and nestlings 
+of other birds. They act somewhat like jays and crows, often call from high perches, and are often found at 
+fruiting trees. Toucans also visit fruit feeders!
+"""
+
+prompt = f"""
+You will be provided with a text delimited by triple backsticks.
+Do the following steps:
+1. Summarize the text into 3 sentences.
+2. Translate the summary into Spanish.
+3. Write a similar text in English about Sri Lanka grey hornbill.
+```{text}```
+"""
+
+response = get_completion(prompt)
+print(response)
 response = get_completion(prompt)
 print(response)
