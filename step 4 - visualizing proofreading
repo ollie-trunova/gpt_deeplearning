@@ -1,0 +1,29 @@
+import openai
+from IPython.display import display, Markdown
+from redlines import Redlines
+
+openai.api_key = 'sk-***' # you can create a private key in your personal account at openai.com
+
+def get_completion(prompt, model = 'gpt-3.5-turbo'):
+    messages = [{'role': 'user', 'content': prompt}]
+    response = openai.ChatCompletion.create(
+        model = model,
+        messages = messages,
+        temperature = 0
+    )
+    return response.choices[0].message['content']
+
+text = f"""
+That's the most exsiting text I ever seen.
+"""
+
+prompt = f"""
+proofread and correct this text.
+Text: ```{text}```
+"""
+
+response = get_completion(prompt)
+print(response)
+
+diff = Redlines(text,response)
+display(Markdown(diff.output_markdown))
