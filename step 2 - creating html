@@ -1,0 +1,36 @@
+import openai
+from IPython.display import display, HTML
+openai.api_key = 'sk-***' # you can create a private key in your personal account at openai.com
+
+def get_completion(prompt, model = 'gpt-3.5-turbo'):
+    messages = [{'role': 'user', 'content': prompt}]
+    response = openai.ChatCompletion.create(
+        model = model,
+        messages = messages,
+        temperature = 0
+    )
+    return response.choices[0].message['content']
+
+text = f"""
+Toucans are indeed restricted to tropical realms and occur from tropical forests in Mexico south 
+to northern Argentina. Although they are absent from Caribbean Islands, several toucan species range 
+in cloud forest, rainforest, and tropical savannah habitats. Costa Rica is fortunate to have 6 species 
+of toucans and even better, most are fairly easy to see!
+
+In general, toucans are very social birds that occur in pairs or small flocks. They nest in tree cavities 
+and use their large beaks to eat fruit, insects and many other small creatures, including eggs and nestlings 
+of other birds. They act somewhat like jays and crows, often call from high perches, and are often found at 
+fruiting trees. Toucans also visit fruit feeders!
+"""
+
+prompt = f"""
+You will be provided with a text delimited by triple backsticks.
+
+Improve the text by adding titles and more details. After that format everything as HTML that can be used in 
+a website. Place the first paragraph in a <div> element.
+```{text}```
+"""
+
+response = get_completion(prompt)
+print(response)
+display(HTML(response))
