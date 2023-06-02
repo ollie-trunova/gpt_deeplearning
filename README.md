@@ -13,4 +13,6 @@ Each step is covering 1 topic:
 
 - Step 4 - proofreading a text and visually comparing the new version with the previous one
 
+- Step 5 - creating a chatbot 
+
 Each step has a comment in the last update, with the text or picture of the output.
